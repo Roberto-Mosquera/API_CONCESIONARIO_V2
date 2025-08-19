@@ -15,14 +15,11 @@ import java.util.UUID;
 @Getter
 @Setter
 public class CategoryCarEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_category")
     private UUID id;
-
     @Column(length = 30,nullable = false, unique = true)
     private String name_category;
-
     private Boolean enabled = Boolean.FALSE;
 }
