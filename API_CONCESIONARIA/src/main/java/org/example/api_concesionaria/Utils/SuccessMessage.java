@@ -1,9 +1,11 @@
 package org.example.api_concesionaria.Utils;
 
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class SuccessMessage<T> {
     private int status = 200;
     private final Boolean isError = Boolean.FALSE;

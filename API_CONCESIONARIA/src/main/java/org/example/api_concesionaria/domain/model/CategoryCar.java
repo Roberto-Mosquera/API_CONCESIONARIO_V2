@@ -7,4 +7,5 @@ public record CategoryCar(
         String name_category,
         Boolean enabled
 ) {
+
 }
