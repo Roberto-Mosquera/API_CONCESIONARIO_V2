@@ -23,7 +23,7 @@ public class CategoryCarController {
 
     @PostMapping("/add")
     public ResponseEntity<SuccessMessage<?>> saveCategoryCar(@RequestBody CreateCategoryCarRequest categoryCarRequest){
-        createCategoryCarUseCase.createCategory(categoryCarRequest);
+        createCategoryCarUseCase.createCategoryCar(categoryCarRequest);
         SuccessMessage<Void> successMessage = SuccessMessage.<Void>builder()
                 .status(200)
                 .message("Se ha guardado Correctamente la categoria")

@@ -21,11 +21,11 @@ public class CarEntity {
     @Column(name = "id_car")
     private UUID id;
 
-    @Column( length = 50, nullable = false)
-    private String name_car;
+    @Column( length = 50, nullable = false,name = "name_car")
+    private String nameCar;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String url_img_car;
+    @Column(nullable = false, columnDefinition = "TEXT",name = "url_img_car")
+    private String urlImgCar;
 
     @Column(nullable = false)
     private Double price;
@@ -54,8 +54,8 @@ public class CarEntity {
     @Column(length = 50, nullable = false)
     private String speed;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String url_technical_sheet;
+    @Column(nullable = false, columnDefinition = "TEXT",name = "url_technical_sheet")
+    private String urlTechnicalSheet;
 
     @Column(nullable = false)
     private Boolean enabled = Boolean.FALSE;
@@ -72,4 +72,19 @@ public class CarEntity {
             referencedColumnName = "id_category"
     )
     private CategoryCarEntity category;
+
+    public CarEntity(String nameCar, String urlImgCar, Double price, Integer stock, String brand, String model, String engine, String traction, String transmission, String torque, String speed, String urlTechnicalSheet) {
+        this.nameCar = nameCar;
+        this.urlImgCar = urlImgCar;
+        this.price = price;
+        this.stock = stock;
+        this.brand = brand;
+        this.model = model;
+        this.engine = engine;
+        this.traction = traction;
+        this.transmission = transmission;
+        this.torque = torque;
+        this.speed = speed;
+        this.urlTechnicalSheet = urlTechnicalSheet;
+    }
 }

@@ -24,7 +24,7 @@ public class CategoryCarService implements CreateCategoryCarUseCase, ListCategor
     private final CategoryCarRepositoryPort  categoryCarRepositoryPort;
 
     @Override
-    public void createCategory(CreateCategoryCarRequest categoryCarRequest) {
+    public void createCategoryCar(CreateCategoryCarRequest categoryCarRequest) {
         CategoryCar categoryCar = CategoryCarMapper.toCategoryCar(categoryCarRequest);
         categoryCarRepositoryPort.saveCategoryCar(categoryCar);
     }
