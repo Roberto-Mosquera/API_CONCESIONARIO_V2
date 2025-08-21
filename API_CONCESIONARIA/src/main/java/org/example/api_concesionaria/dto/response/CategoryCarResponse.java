@@ -4,6 +4,6 @@ import java.util.UUID;
 
 public record CategoryCarResponse(
         UUID id,
-        String name_category
+        String nameCategory
 ) {
 }

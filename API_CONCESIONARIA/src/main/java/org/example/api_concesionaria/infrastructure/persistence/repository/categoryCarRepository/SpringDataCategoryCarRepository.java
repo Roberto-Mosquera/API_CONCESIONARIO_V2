@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface SpringDataCategoryCarRepository extends JpaRepository<CategoryCarEntity, UUID> {
+    boolean existsByNameCategory(String nameCategory);
 }

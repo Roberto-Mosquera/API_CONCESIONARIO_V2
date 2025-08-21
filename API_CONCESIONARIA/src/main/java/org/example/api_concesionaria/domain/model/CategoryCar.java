@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public record CategoryCar(
         UUID id,
-        String name_category,
+        String nameCategory,
         Boolean enabled
 ) {
 

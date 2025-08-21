@@ -13,21 +13,21 @@ public class CategoryCarMapper {
     public static CategoryCar toCategoryCar(CreateCategoryCarRequest categoryCarRequest) {
         return new CategoryCar(
                 null,
-                categoryCarRequest .name_category(),
+                categoryCarRequest .nameCategory(),
                 null
         );
     }
 
     public static CategoryCarEntity toCategoryCarEntityCreate(CategoryCar car) {
         return new CategoryCarEntity(
-                car.name_category()
+                car.nameCategory()
         );
     }
 
     public static CategoryCarResponse toCategoryCarResponse(CategoryCarEntity categoryCarEntity) {
         return new CategoryCarResponse(
                 categoryCarEntity.getId(),
-                categoryCarEntity.getName_category()
+                categoryCarEntity.getNameCategory()
         );
     }
 

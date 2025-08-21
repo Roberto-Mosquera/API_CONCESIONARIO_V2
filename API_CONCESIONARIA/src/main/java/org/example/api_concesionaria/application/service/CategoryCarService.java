@@ -38,7 +38,7 @@ public class CategoryCarService implements CreateCategoryCarUseCase, ListCategor
     public CategoryCarResponse findCategoryCar(UUID id) {
         return categoryCarRepositoryPort.getCategoryCarById(id);
     }
-    
+
     @Override
     public CategoryCarEntity findCategoryCarEntity(UUID id) {
         return null;
