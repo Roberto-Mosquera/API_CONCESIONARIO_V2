@@ -13,7 +13,7 @@ public class CarMapper {
                 createCarRequest.price(),
                 createCarRequest.stock(),
                 createCarRequest.brand(),
-                createCarRequest.engine(),
+                createCarRequest.model(),
                 createCarRequest.engine(),
                 createCarRequest.traction(),
                 createCarRequest.transmission(),
