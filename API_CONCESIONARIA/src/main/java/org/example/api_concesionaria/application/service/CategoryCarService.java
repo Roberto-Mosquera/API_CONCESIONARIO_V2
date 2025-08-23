@@ -7,6 +7,7 @@ import org.example.api_concesionaria.application.port.input.simpleUseCase.catego
 import org.example.api_concesionaria.application.port.input.simpleUseCase.categoryCarUseCase.ListCategoryCarUseCase;
 import org.example.api_concesionaria.application.port.output.CategoryCarRepositoryPort;
 import org.example.api_concesionaria.domain.model.CategoryCar;
+import org.example.api_concesionaria.domain.service.CategoryCarValidator;
 import org.example.api_concesionaria.dto.request.CreateCategoryCarRequest;
 import org.example.api_concesionaria.dto.response.CategoryCarResponse;
 import org.example.api_concesionaria.infrastructure.persistence.entity.CategoryCarEntity;
@@ -22,10 +23,12 @@ public class CategoryCarService implements CreateCategoryCarUseCase, ListCategor
         FindCategoryCarUseCase, FindCategoryCarEntityUseCase {
 
     private final CategoryCarRepositoryPort  categoryCarRepositoryPort;
+    private final CategoryCarValidator categoryCarValidator;
 
     @Override
     public void createCategoryCar(CreateCategoryCarRequest categoryCarRequest) {
         CategoryCar categoryCar = CategoryCarMapper.toCategoryCar(categoryCarRequest);
+        categoryCarValidator.validateRequestSave(categoryCar);
         categoryCarRepositoryPort.saveCategoryCar(categoryCar);
     }
 

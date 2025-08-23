@@ -16,11 +16,7 @@ public class CategoryCarValidatorPersistence implements CategoryCarMessageExcept
 
     private final SpringDataCategoryCarRepository springDataCategoryCarRepository;
 
-    public void validateRequestSave(CategoryCar categoryCar) {
-        if (categoryCar.nameCategory() == null || categoryCar.nameCategory().isBlank()) {
-            throw new RequestException(MISSING_NAME_CATEGORY_CAR, HttpStatus.BAD_REQUEST);
-        }
-
+    public void validateDuplicateName(CategoryCar categoryCar) {
         if (springDataCategoryCarRepository.existsByNameCategory(categoryCar.nameCategory())) {
             throw new BusinessException(THAT_NAME_ALREADY_EXISTS, HttpStatus.CONFLICT);
         }

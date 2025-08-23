@@ -1,10 +1,7 @@
 package org.example.api_concesionaria.config;
 
+import org.example.api_concesionaria.exception.*;
 import org.example.api_concesionaria.utils.ErrorMessage;
-import org.example.api_concesionaria.exception.BadRequestException;
-import org.example.api_concesionaria.exception.BusinessException;
-import org.example.api_concesionaria.exception.NotFoundException;
-import org.example.api_concesionaria.exception.RequestException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -47,4 +44,14 @@ public class ControllerAdvice {
                 .build();
         return new ResponseEntity<>(errorMessage, ex.getStatus());
     }
+
+    @ExceptionHandler(value = DomainException.class)
+    public ResponseEntity<ErrorMessage>  ExceptionHandler(DomainException ex) {
+        ErrorMessage errorMessage = ErrorMessage.builder()
+                .status(ex.getStatus().value())
+                .message(ex.getMessage())
+                .build();
+        return new ResponseEntity<>(errorMessage, ex.getStatus());
+    }
+
 }

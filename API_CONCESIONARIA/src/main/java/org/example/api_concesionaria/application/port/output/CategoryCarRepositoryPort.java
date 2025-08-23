@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CategoryCarRepositoryPort {
-    Boolean saveCategoryCar(CategoryCar categoryCar);
+    UUID saveCategoryCar(CategoryCar categoryCar);
     List<CategoryCarResponse> getListCategoryCar(int page);
     CategoryCarResponse getCategoryCarById(UUID id);
     CategoryCarEntity getCategoryCarEntityById(UUID id);
