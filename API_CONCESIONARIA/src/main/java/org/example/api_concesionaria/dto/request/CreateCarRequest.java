@@ -15,7 +15,6 @@ public record CreateCarRequest(
         String torque,
         String speed,
         String urlTechnicalSheet,
-        Boolean enabled,
         UUID id_categoryCar
 ) {
 }

@@ -46,8 +46,7 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
     public CategoryCarResponse getCategoryCarById(UUID id) {
         CategoryCarEntity categoryCarEntity = springDataCategoryCarRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(
-                        NOT_FOUNT_CATEGORY_CAR_BY_ID,
-                        HttpStatus.NOT_FOUND
+                        NOT_FOUNT_CATEGORY_CAR_BY_ID
                 ));
         return CategoryCarMapper.toCategoryCarResponse(categoryCarEntity);
     }
@@ -56,8 +55,7 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
     public CategoryCarEntity getCategoryCarEntityById(UUID id) {
         return springDataCategoryCarRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(
-                        NOT_FOUNT_CATEGORY_CAR_BY_ID,
-                        HttpStatus.NOT_FOUND
+                        NOT_FOUNT_CATEGORY_CAR_BY_ID
                 ));
     }
 

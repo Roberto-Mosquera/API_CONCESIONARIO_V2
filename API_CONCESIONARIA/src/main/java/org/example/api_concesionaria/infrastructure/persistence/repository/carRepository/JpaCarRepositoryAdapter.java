@@ -3,14 +3,18 @@ package org.example.api_concesionaria.infrastructure.persistence.repository.carR
 import lombok.RequiredArgsConstructor;
 import org.example.api_concesionaria.application.port.output.CarRepositoryPort;
 import org.example.api_concesionaria.domain.model.Car;
+import org.example.api_concesionaria.exception.NotFoundException;
 import org.example.api_concesionaria.infrastructure.persistence.entity.CarEntity;
 import org.example.api_concesionaria.infrastructure.persistence.entity.CategoryCarEntity;
 import org.example.api_concesionaria.infrastructure.persistence.repository.categoryCarRepository.JpaCategoryCarRepositoryAdapter;
 import org.example.api_concesionaria.mapper.CarMapper;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.List;
 import java.util.UUID;
 
 @Component
@@ -30,5 +34,73 @@ public class JpaCarRepositoryAdapter implements CarRepositoryPort {
         carEntity = springDataCarRepository.save(carEntity);
         return carEntity.getId();
     }
+
+    @Override
+    public Car findCarById(UUID id) {
+        CarEntity carEntity = springDataCarRepository.findById(id)
+                .orElseThrow( () -> new NotFoundException("No se encontro el carro con el id: " + id) );
+        return CarMapper.toCar(carEntity);
+    }
+
+    @Override
+    public Car findCarByName(String name_car) {
+        CarEntity carEntity = springDataCarRepository.findByNameCar(name_car)
+                .orElseThrow( () -> new NotFoundException("No se encontro el carro con el nombre de : " + name_car) );
+        return CarMapper.toCar(carEntity);
+    }
+
+    @Override
+    public List<Car> ListCarResponseFull(int page) {
+        List<CarEntity> carEntities = springDataCarRepository.findAll(
+                PageRequest.of(page, 10)
+        ).getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
+    @Override
+    public List<Car> ListCarResponseByEngine(int page, String engine) {
+        Pageable pageable = PageRequest.of(page, 10);
+        List<CarEntity> carEntities = springDataCarRepository
+                .findListByEngine(engine, pageable)
+                .getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
+    @Override
+    public List<Car> ListCarResponseByTransmission(int page, String transmission) {
+        Pageable pageable = PageRequest.of(page, 10);
+        List<CarEntity> carEntities = springDataCarRepository
+                .findListByTransmission(transmission,pageable)
+                .getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
+    @Override
+    public List<Car> ListCarResponseByTraction(int page, String traction) {
+        Pageable pageable = PageRequest.of(page, 10);
+        List<CarEntity> carEntities = springDataCarRepository
+                .findListByTraction(traction,pageable)
+                .getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
+    @Override
+    public List<Car> ListCarResponseBySpeed(int page, String speed) {
+        Pageable pageable = PageRequest.of(page, 10);
+        List<CarEntity> carEntities = springDataCarRepository
+                .findListBySpeed(speed,pageable)
+                .getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
+    @Override
+    public List<Car> ListCarResponseByCategory(int page, UUID CategoryId) {
+        Pageable pageable = PageRequest.of(page, 10);
+        List<CarEntity> carEntities = springDataCarRepository
+                .findListByCategory(CategoryId,pageable)
+                .getContent();
+        return CarMapper.toListCar(carEntities);
+    }
+
 
 }
