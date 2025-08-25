@@ -2,7 +2,6 @@ package org.example.api_concesionaria.config;
 
 import org.example.api_concesionaria.exception.*;
 import org.example.api_concesionaria.utils.ErrorMessage;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
