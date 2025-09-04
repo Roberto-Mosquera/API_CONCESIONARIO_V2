@@ -21,8 +21,8 @@ public class ItemGalleryEntity {
     @Column(name = "id_item_gallery")
     private UUID id;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String url_img_item;
+    @Column(nullable = false, columnDefinition = "TEXT",name = "url_img_item")
+    private String urlImgItem;
 
     @ManyToOne(
             cascade = {

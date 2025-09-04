@@ -24,8 +24,6 @@ public class CategoryCarEntity {
     private String nameCategory;
     private Boolean enabled = Boolean.FALSE;
 
-    public CategoryCarEntity(String nameCategory) {
-        this.nameCategory = nameCategory;
-    }
+
 
 }

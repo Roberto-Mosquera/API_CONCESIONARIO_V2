@@ -73,18 +73,4 @@ public class CarEntity {
     )
     private CategoryCarEntity category;
 
-    public CarEntity(String nameCar, String urlImgCar, Double price, Integer stock, String brand, String model, String engine, String traction, String transmission, String torque, String speed, String urlTechnicalSheet) {
-        this.nameCar = nameCar;
-        this.urlImgCar = urlImgCar;
-        this.price = price;
-        this.stock = stock;
-        this.brand = brand;
-        this.model = model;
-        this.engine = engine;
-        this.traction = traction;
-        this.transmission = transmission;
-        this.torque = torque;
-        this.speed = speed;
-        this.urlTechnicalSheet = urlTechnicalSheet;
-    }
 }

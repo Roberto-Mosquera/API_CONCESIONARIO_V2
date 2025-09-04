@@ -4,5 +4,4 @@ import org.example.api_concesionaria.infrastructure.persistence.entity.CategoryC
 import java.util.UUID;
 
 public interface FindCategoryCarEntityUseCase {
-    CategoryCarEntity findCategoryCarEntity(UUID id);
 }

@@ -18,21 +18,37 @@ public class CategoryCarMapper {
         );
     }
 
-    public static CategoryCarEntity toCategoryCarEntityCreate(CategoryCar car) {
+    public static CategoryCarEntity toCategoryCarEntityCreate(CategoryCar categoryCar) {
         return new CategoryCarEntity(
-                car.nameCategory()
+                categoryCar.getId(),
+                categoryCar.getNameCategory(),
+                categoryCar.getEnabled()
         );
     }
 
-    public static CategoryCarResponse toCategoryCarResponse(CategoryCarEntity categoryCarEntity) {
-        return new CategoryCarResponse(
+    public static CategoryCar toCategoryCar(CategoryCarEntity categoryCarEntity) {
+        return new CategoryCar(
                 categoryCarEntity.getId(),
-                categoryCarEntity.getNameCategory()
+                categoryCarEntity.getNameCategory(),
+                categoryCarEntity.getEnabled()
         );
     }
 
-    public static List<CategoryCarResponse> toListCategoryCarResponse(List<CategoryCarEntity> categoryCarEntities) {
+    public static List<CategoryCar> toListCategoryCar(List<CategoryCarEntity> categoryCarEntities) {
         return categoryCarEntities.stream()
+                .map(CategoryCarMapper::toCategoryCar)
+                .toList();
+    }
+
+    public static CategoryCarResponse toCategoryCarResponse(CategoryCar categoryCar) {
+        return new CategoryCarResponse(
+                categoryCar.getId(),
+                categoryCar.getNameCategory()
+        );
+    }
+
+    public static List<CategoryCarResponse> toListCategoryCarResponse(List<CategoryCar> categoryCars) {
+        return categoryCars.stream()
                 .map(CategoryCarMapper::toCategoryCarResponse)
                 .toList();
     }

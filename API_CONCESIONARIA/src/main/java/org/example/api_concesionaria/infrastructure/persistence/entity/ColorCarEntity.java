@@ -21,11 +21,11 @@ public class ColorCarEntity {
     @Column(name = "id_color_car")
     private UUID id;
 
-    @Column(length = 20)
-    private String name_color;
+    @Column(length = 20,name = "name_color")
+    private String nameColor;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String url_img_color;
+    @Column(nullable = false, columnDefinition = "TEXT",name = "url_img_color")
+    private String urlImgColor;
 
     @Column( nullable = false)
     private Boolean enabled = Boolean.FALSE;

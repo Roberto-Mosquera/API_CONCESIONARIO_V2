@@ -13,7 +13,9 @@ import java.util.UUID;
 
 public interface SpringDataCarRepository extends JpaRepository<CarEntity, UUID> {
 
-    Optional<CarEntity> findByNameCar(String nameCar);
+    Optional<CarEntity> findByIdAndEnabledFalse(UUID id);
+
+    Optional<CarEntity> findByNameCarAndEnabledFalse(String nameCar);
 
     @Query("SELECT c FROM CarEntity c WHERE c.engine=:engine AND c.enabled=false")
     Page<CarEntity> findListByEngine(@Param("engine")String engine, Pageable pageable);

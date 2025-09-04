@@ -23,25 +23,25 @@ public class CustomerEntity {
     @Column(name = "id_customer")
     private UUID id;
 
-    @Column(length = 30,nullable = false)
-    private String first_name;
-    @Column(length = 30,nullable = false)
-    private String middle_name;
-    @Column(length = 30,nullable = false)
-    private String paternal_surname;
-    @Column(length = 30,nullable = false)
-    private String maternal_surname;
+    @Column(length = 30,nullable = false,name = "first_name")
+    private String firstName;
+    @Column(length = 30,nullable = false,name = "middle_name")
+    private String middleName;
+    @Column(length = 30,nullable = false,name = "paternal_surname")
+    private String paternalSurname;
+    @Column(length = 30,nullable = false,name = "maternal_surname")
+    private String maternalSurname;
     @Column(length = 50,nullable = false)
     private String email;
     @Column(length = 12,nullable = false)
     private String phone;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "document")
-    private TypeDocument type_document;
+    @Column(columnDefinition = "document",name = "type_document")
+    private TypeDocument typeDocument;
 
-    @Column(length = 15,unique = true)
-    private String document_text;
+    @Column(length = 15,unique = true,name = "document_text")
+    private String documentText;
 
     private Boolean enabled = Boolean.FALSE;
 
