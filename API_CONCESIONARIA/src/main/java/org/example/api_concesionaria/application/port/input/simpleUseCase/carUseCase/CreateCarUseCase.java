@@ -3,5 +3,5 @@ package org.example.api_concesionaria.application.port.input.simpleUseCase.carUs
 import org.example.api_concesionaria.dto.request.CreateCarRequest;
 
 public interface CreateCarUseCase {
-    void createCar(CreateCarRequest carRequest);
+    void createCar(CreateCarRequest carRequest) throws Exception;
 }

@@ -2,7 +2,12 @@ package org.example.api_concesionaria.application.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.api_concesionaria.application.port.input.simpleUseCase.colorCarUseCase.CreateColorCarUseCase;
+import org.example.api_concesionaria.application.port.output.CarRepositoryPort;
 import org.example.api_concesionaria.application.port.output.ColorCarRepositoryPort;
+import org.example.api_concesionaria.domain.model.Car;
+import org.example.api_concesionaria.domain.model.ColorCar;
+import org.example.api_concesionaria.dto.request.CreateColorCarRequest;
+import org.example.api_concesionaria.mapper.ColorCarMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,8 +16,13 @@ public class ColorCarService implements CreateColorCarUseCase {
 
     private final ColorCarRepositoryPort colorCarRepositoryPort;
 
-    @Override
-    public void createColorCar(String color_name, String url_img_color) {
+    private final CarRepositoryPort carRepositoryPort;
 
+    @Override
+    public void createColorCar(CreateColorCarRequest createColorCarRequest) {
+        Car car = carRepositoryPort.findCarById(createColorCarRequest.id_car());
+        ColorCar colorCar = ColorCarMapper.toCreateColorCar(createColorCarRequest,car);
+        colorCarRepositoryPort.saveColorCar(colorCar);
     }
+
 }

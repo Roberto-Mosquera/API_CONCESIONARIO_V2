@@ -48,12 +48,4 @@ public class JpaCategoryCarRepositoryAdapter implements CategoryCarRepositoryPor
                 ));
         return CategoryCarMapper.toCategoryCar(categoryCarEntity);
     }
-
-    public CategoryCarEntity getCategoryCarEntityById(UUID id) {
-        return springDataCategoryCarRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(
-                        NOT_FOUNT_CATEGORY_CAR_BY_ID
-                ));
-    }
-
 }

@@ -17,7 +17,7 @@ import java.util.UUID;
 @Component
 public class UploadFiles {
 
-    @Value("${max-mb}")
+    @Value("${upload.max-mb}")
     private long maxMb;
 
     private String [] allowed = {".jpg",".png",".jpeg",".xlsx",".xls",".docx"};
@@ -74,7 +74,7 @@ public class UploadFiles {
     }
 
     public Long getMaxMb() {
-        return maxMb - 1 ;
+        return maxMb ;
     }
 
     public void extensionValidation(String fileOriginalName) {

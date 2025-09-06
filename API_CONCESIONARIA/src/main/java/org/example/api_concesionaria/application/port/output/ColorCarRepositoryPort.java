@@ -1,5 +1,7 @@
 package org.example.api_concesionaria.application.port.output;
 
+import org.example.api_concesionaria.domain.model.ColorCar;
+
 public interface ColorCarRepositoryPort {
-    void saveColorCar(String color_name,String url_img_color);
+    void saveColorCar(ColorCar colorCar);
 }

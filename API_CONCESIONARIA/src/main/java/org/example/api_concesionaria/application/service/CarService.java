@@ -8,9 +8,11 @@ import org.example.api_concesionaria.application.port.output.CarRepositoryPort;
 import org.example.api_concesionaria.application.port.output.CategoryCarRepositoryPort;
 import org.example.api_concesionaria.domain.model.Car;
 import org.example.api_concesionaria.domain.model.CategoryCar;
+import org.example.api_concesionaria.dto.request.CreateCarFiles;
 import org.example.api_concesionaria.dto.request.CreateCarRequest;
 import org.example.api_concesionaria.dto.response.CarResponseItem;
 import org.example.api_concesionaria.mapper.CarMapper;
+import org.example.api_concesionaria.utils.FileMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,12 +24,13 @@ public class CarService implements CreateCarUseCase, ListCarUseCase, FindCarUseC
 
     private final CarRepositoryPort  carRepositoryPort;
     private final CategoryCarRepositoryPort categoryCarRepositoryPort;
-
+    private final FileMapper fileMapper;
 
     @Override
-    public void createCar(CreateCarRequest carRequest) {
+    public void createCar(CreateCarRequest carRequest) throws Exception {
+        CreateCarFiles files = fileMapper.saveFileCategoryCar(carRequest);
         CategoryCar categoryCar = categoryCarRepositoryPort.getCategoryCarById(carRequest.id_categoryCar());
-        Car car = CarMapper.toCarCreate(carRequest,categoryCar);
+        Car car = CarMapper.toCarCreate(carRequest,categoryCar,files);
         carRepositoryPort.saveCar(car);
     }
 
@@ -77,29 +80,6 @@ public class CarService implements CreateCarUseCase, ListCarUseCase, FindCarUseC
     public List<CarResponseItem> ListCarResponseByCategory(int page, UUID CategoryId) {
         List<Car>cars=carRepositoryPort.ListCarResponseByCategory(page,CategoryId);
         return CarMapper.toListCarResponseItem(cars);
-    }
-
-    public static void main(String[] args) {
-    }
-
-
-    public static String gramaticaDeContextoLibre(String expasion,String num){
-        String res = borrarCaracter(expasion);
-        if(!res.equals(num)){
-            return gramaticaDeContextoLibre(regla0S1(expasion),num);
-        }
-        return res;
-    }
-
-    public static String regla0S1(String cadena){
-        String res = cadena.replace("S", "0S1");
-        System.out.println("Expansion: " + res);
-        return res;
-    }
-
-    public static String borrarCaracter(String cadena){
-        String res = cadena.replace("S", "");
-        return res;
     }
 
 }

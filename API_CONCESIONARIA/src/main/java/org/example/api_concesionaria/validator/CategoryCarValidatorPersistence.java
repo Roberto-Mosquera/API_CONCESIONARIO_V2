@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.api_concesionaria.domain.model.CategoryCar;
 import org.example.api_concesionaria.exception.BadRequestException;
 import org.example.api_concesionaria.exception.BusinessException;
-import org.example.api_concesionaria.exception.RequestException;
+
 import org.example.api_concesionaria.infrastructure.persistence.repository.categoryCarRepository.SpringDataCategoryCarRepository;
 import org.example.api_concesionaria.utils.messegeException.CategoryCarMessageException;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,7 @@ public class CategoryCarValidatorPersistence implements CategoryCarMessageExcept
     private final SpringDataCategoryCarRepository springDataCategoryCarRepository;
 
     public void validateDuplicateName(CategoryCar categoryCar) {
-        if (springDataCategoryCarRepository.existsByNameCategory(categoryCar.nameCategory())) {
+        if (springDataCategoryCarRepository.existsByNameCategory(categoryCar.getNameCategory())) {
             throw new BusinessException(THAT_NAME_ALREADY_EXISTS, HttpStatus.CONFLICT);
         }
     }

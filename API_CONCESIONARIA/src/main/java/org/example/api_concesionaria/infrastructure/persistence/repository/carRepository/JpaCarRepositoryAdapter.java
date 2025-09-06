@@ -47,12 +47,6 @@ public class JpaCarRepositoryAdapter implements CarRepositoryPort {
     }
 
     @Override
-    public CarEntity findCarEntityById(UUID id) {
-        return springDataCarRepository.findByIdAndEnabledFalse(id)
-                .orElseThrow( ()->new NotFoundException("No se encontro el carro con el id: " + id) );
-    }
-
-    @Override
     public List<Car> ListCarResponseFull(int page) {
         List<CarEntity> carEntities = springDataCarRepository.findAll(
                 PageRequest.of(page, 10)

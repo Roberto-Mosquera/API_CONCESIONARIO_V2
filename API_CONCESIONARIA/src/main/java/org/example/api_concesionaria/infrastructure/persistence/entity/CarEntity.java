@@ -73,4 +73,8 @@ public class CarEntity {
     )
     private CategoryCarEntity category;
 
+    public CarEntity(UUID id) {
+        this.id = id;
+    }
+
 }
