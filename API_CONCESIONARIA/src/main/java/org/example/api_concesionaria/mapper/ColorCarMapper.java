@@ -7,10 +7,10 @@ import org.example.api_concesionaria.infrastructure.persistence.entity.ColorCarE
 
 public class ColorCarMapper {
 
-    public static ColorCar toCreateColorCar(CreateColorCarRequest createColorCarRequest, Car car){
+    public static ColorCar toCreateColorCar(CreateColorCarRequest createColorCarRequest, Car car,String urlImgColor){
         return new ColorCar(
                 createColorCarRequest.nameColor(),
-                createColorCarRequest.urlImgColor(),
+                urlImgColor,
                 car
         );
     }

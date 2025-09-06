@@ -1,10 +1,12 @@
 package org.example.api_concesionaria.dto.request;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.UUID;
 
 public record CreateColorCarRequest(
         String nameColor,
-        String urlImgColor,
+        MultipartFile urlImgColor,
         UUID id_car
 ) {
 }
